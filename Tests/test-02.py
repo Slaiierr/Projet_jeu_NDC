@@ -1,12 +1,12 @@
 import pyxel
 
+
 class jeu:
     def __init__(self):
         pyxel.init(128, 128, title="Nuit du Code")
         self.vaisseau_x = 60
         self.vaisseau_y = 60
         pyxel.run(self.update, self.draw)
-
 
     def vaisseau_deplacement(self):
 
@@ -18,7 +18,7 @@ class jeu:
             self.vaisseau_x += 1
         if pyxel.btn(pyxel.KEY_Q) and self.vaisseau_x > 0:
             self.vaisseau_x += -1
-        
+
     def update(self):
         self.vaisseau_deplacement()
 
