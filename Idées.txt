@@ -1,3 +1,0 @@
-Idées pour le jeu :
-
-    - Personnage qui se déplace dans un environnement et qui ne doit pas toucher les bords de la map sinon retour au début (espece de labyrinthe que le joueur doit traverser)
