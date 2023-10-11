@@ -25,9 +25,6 @@ class Jeu:
         # initialisation des explosions
         self.explosions_liste = []
 
-        # chargement des images
-        pyxel.load("images.pyxres")
-
         pyxel.run(self.update, self.draw)
 
 
