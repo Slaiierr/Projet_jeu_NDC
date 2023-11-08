@@ -1,4 +1,6 @@
-import pyxel, random
+import pyxel
+import random
+
 
 class Jeu:
     def __init__(self):
@@ -16,19 +18,17 @@ class Jeu:
 
         pyxel.run(self.update, self.draw)
 
-
     def vaisseau_deplacement(self):
         """déplacement avec les touches de directions"""
 
-        if pyxel.btn(pyxel.KEY_D) and self.vaisseau_x<120:
+        if pyxel.btn(pyxel.KEY_D) and self.vaisseau_x < 120:
             self.vaisseau_x += 1
-        if pyxel.btn(pyxel.KEY_Q) and self.vaisseau_x>0:
+        if pyxel.btn(pyxel.KEY_Q) and self.vaisseau_x > 0:
             self.vaisseau_x += -1
-        if pyxel.btn(pyxel.KEY_S) and self.vaisseau_y<120:
+        if pyxel.btn(pyxel.KEY_S) and self.vaisseau_y < 120:
             self.vaisseau_y += 1
-        if pyxel.btn(pyxel.KEY_Z) and self.vaisseau_y>0:
+        if pyxel.btn(pyxel.KEY_Z) and self.vaisseau_y > 0:
             self.vaisseau_y += -1
-
 
     def ennemis_creation(self):
         """création aléatoire des ennemis"""
@@ -36,12 +36,11 @@ class Jeu:
         if (pyxel.frame_count % 30 == 0):
             self.ennemis_liste.append([random.randint(0, 120), 0])
 
-
     def ennemis_deplacement(self):
-        """déplacement des ennemis vers le haut et suppression s'ils sortent du cadre"""              
+        """déplacement des ennemis vers le haut et suppression s'ils sortent du cadre"""
         for ennemi in self.ennemis_liste:
             ennemi[1] += 1
-            if  ennemi[1]>128:
+            if ennemi[1] > 128:
                 self.ennemis_liste.remove(ennemi)
 
     def vaisseau_suppression(self):
@@ -50,7 +49,7 @@ class Jeu:
         for ennemi in self.ennemis_liste:
             if ennemi[0] <= self.vaisseau_x+8 and ennemi[1] <= self.vaisseau_y+8 and ennemi[0]+8 >= self.vaisseau_x and ennemi[1]+8 >= self.vaisseau_y:
                 self.ennemis_liste.remove(ennemi)
-                self.vies -= 1 
+                self.vies -= 1
 
     # =====================================================
     # == UPDATE
@@ -67,12 +66,10 @@ class Jeu:
 
         self.vaisseau_suppression()
 
-
-
-
     # =====================================================
     # == DRAW
     # =====================================================
+
     def draw(self):
         """création et positionnement des objets (30 fois par seconde)"""
         # affiche vies
@@ -90,6 +87,7 @@ class Jeu:
         # sinon: GAME OVER
         else:
 
-            pyxel.text(50,64, 'GAME OVER', 7)  
+            pyxel.text(50, 64, 'GAME OVER', 7)
+
 
 Jeu()
