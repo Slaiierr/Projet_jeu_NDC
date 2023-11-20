@@ -9,7 +9,8 @@ class Pokemon:
                  Attaque=randint(51, 100),
                  Defense=randint(1, 50),
                  PvMax=randint(101, 150),
-                 rea=0):
+                 rea=0,
+                 xp=0):
 
         self.nom = Nom
         self.type = Typ
@@ -19,9 +20,11 @@ class Pokemon:
         self.pvMax = PvMax
         self.pvActuels = PvMax
         self.__compteur_rea = rea
+        self.experience = xp
 
 
 ### ACCESSEURS ###
+
 
     def set_compteur_rea(self, valeur):
         self.__compteur_rea += valeur
@@ -47,6 +50,7 @@ class Pokemon:
 
 ### JEU ###
 
+
     def __str__(self):
         """Indique si le pokémon est ko, sinon, ses stats"""
         if self.ko() == True:
@@ -55,7 +59,7 @@ class Pokemon:
 
     def fiche_pokemon(self):
         """Donne la fiche complète du pokémon"""
-        return ("Ce pokémon s'appelle " + str(self.nom) + ", il est de type " + str(self.type) + ". Voici ses stats : " + ("pv actuels " + str(self.pvActuels) + ", attaque : " + str(self.pts_attaque) + ", défense : " + str(self.pts_defense) + ", vitesse : " + str(self.pts_vitesse) + ", il a été réanimé " + str(self.__compteur_rea) + " fois."))
+        return ("Ce pokémon s'appelle " + str(self.nom) + ", il est de type " + str(self.type) + ". Voici ses stats : " + ("pv actuels " + str(self.pvActuels) + ", attaque : " + str(self.pts_attaque) + ", défense : " + str(self.pts_defense) + ", vitesse : " + str(self.pts_vitesse) + ", il a été réanimé " + str(self.__compteur_rea) + " fois et il a " + str(self.experience) + " XP !"))
 
     def attaque(self, pokemonAdverse):
         """Permet aux pokémon d'attaquer un autre pokémon"""
@@ -87,13 +91,4 @@ class Pokemon:
 pic = Pokemon("Pic", "feu", 1, 100, 50, 100)
 dracaufeu = Pokemon("Dracaufeu", "feu", 1, 50, 50, 100)
 
-pic.attaque(dracaufeu)
-pic.attaque(dracaufeu)
-print(dracaufeu)
-dracaufeu.reanimation()
-print(dracaufeu)
-print(dracaufeu.fiche_pokemon())
-pic.attaque(dracaufeu)
-pic.attaque(dracaufeu)
-dracaufeu.reanimation()
-print(dracaufeu.fiche_pokemon())
+print(dracaufeu.fiche_pokemon)
